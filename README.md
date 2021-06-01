@@ -13,7 +13,7 @@ across all savings goals, one of the savings events will receive a deviating amo
 
 The task specification says about the Roundup rule: 
 "...it rounds the amount on the transaction to the nearest multiple of the configured roundup amount..."
-I have chosen to interpret thi as the nearest _upper_ multiple, since the rule is named Round*up*.
+I have chosen to interpret this as the nearest _upper_ multiple, since the rule is named Round*up*.
 
 I added the SavingsEventService as a SavingsEvent producer.
 
@@ -25,9 +25,13 @@ All newly introduced classes are written in Kotlin.
 
 I found the REST endpoint naming to be a bit hard to understand.
 It seems odd to use a path parameter for a user, {userId}, in a path not relating to a user.
-This would be more conventional option in my opinion:
+This would be a more conventional option in my opinion:
 
 `/api/savings-rules?active={boolean}&user={userId}`
+
+Or maybe:
+
+`/api/savings-rules/active?user={userId}`
 
 My overall guiding rule however, was to not mess with the existing API, so I simply added the new endpoint within
 the existing structure:
@@ -37,6 +41,5 @@ the existing structure:
 ## New dependencies
 
 * `kotlin-stdlib` and `kotlin-reflect` to use Kotlin
-* `jackson-datatype-jsr310` for ISO 8601 formatting
-* `spring-boot-starter-test` for tests
-* `assertj-core` for tests
+* `jackson-datatype-jsr310` for JSON ISO 8601 formatting
+* `spring-boot-starter-test` and `assertj-core` for tests
