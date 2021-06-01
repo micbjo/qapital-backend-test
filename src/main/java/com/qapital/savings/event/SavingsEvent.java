@@ -42,6 +42,18 @@ public class SavingsEvent {
 		this.created = Instant.now();
 	}
 
+	public SavingsEvent(SavingsRule savingsRule, Long savingsGoalId, Long triggerId, EventName eventName, LocalDate date, Double amount) {
+		this.userId = savingsRule.getUserId();
+		this.savingsGoalId = savingsGoalId;
+		this.savingsRuleId = savingsRule.getId();
+		this.eventName = eventName;
+		this.date = date;
+		this.amount = amount;
+		this.triggerId = triggerId;
+		this.ruleType = savingsRule.getRuleType();
+		this.created = Instant.now();
+	}
+
 	public Long getId() {
 		return id;
 	}
